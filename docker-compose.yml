@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: paysync-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: paysync_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: paysync-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"   # Porta do serviço de mensageria (onde o Spring Boot conecta)
+      - "15672:15672" # Porta do painel de controle (Admin UI no navegador)
+
+volumes:
+  mysql_data:
