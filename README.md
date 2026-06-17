@@ -29,3 +29,13 @@ O ecossistema é composto por dois microsserviços Spring Boot que se comunicam 
 1. Suba a infraestrutura (MySQL e RabbitMQ):
    ```bash
    docker-compose up -d
+
+2. Inicie o serviço de Ingestão:
+   ```bash
+   cd payment-ingestion
+   ./mvnw spring-boot:run
+
+3. Inicie o serviço de Conciliação:
+   ```bash
+   cd reconciliation-service
+   ./mvnw spring-boot:run
